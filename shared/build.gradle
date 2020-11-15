@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'test.gracefully.shutdown'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'javax.persistence:javax.persistence-api:2.2'
+    compile 'org.springframework.data:spring-data-commons:2.3.3.RELEASE'
+}

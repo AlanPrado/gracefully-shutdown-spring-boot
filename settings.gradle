@@ -1,0 +1,5 @@
+rootProject.name = 'gracefully-shutdown'
+include 'database'
+include 'app'
+include 'shared'
+
