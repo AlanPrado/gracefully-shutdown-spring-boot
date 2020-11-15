@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'application'
 }
 
 group 'test.gracefully.shutdown.app'
@@ -9,6 +10,10 @@ version '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = 'test.gracefully.shutdown.Application'
 }
 
 dependencies {
