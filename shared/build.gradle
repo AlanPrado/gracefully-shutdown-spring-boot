@@ -2,6 +2,8 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = '1.11'
+
 group 'test.gracefully.shutdown'
 version '0.0.1-SNAPSHOT'
 
