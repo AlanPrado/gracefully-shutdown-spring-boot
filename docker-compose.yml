@@ -2,12 +2,10 @@ version: '3.8'
 services:
 
   database:
-    build:
-      context: ./database
     image: database:1
     ports:
       - "7000:8080"
-      - "9000:9000"
+      - "9000"
     networks:
       - private_network
     deploy:
