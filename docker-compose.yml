@@ -22,7 +22,7 @@ services:
     stop_grace_period: 180s
 
   web:
-    image: app:1.0.0
+    image: app:1.0.1
     ports:
       - "8081:8081"
     networks:
