@@ -20,7 +20,7 @@ services:
  web:
    image: app:1.0.0
    ports:
-     - "8081-8085:8081"
+     - "8081:8081"
    networks:
      - private_network
    depends_on:
