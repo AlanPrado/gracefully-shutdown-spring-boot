@@ -2,7 +2,7 @@ version: '3.8'
 services:
 
   database:
-    image: database:1
+    image: database:1.0.0
     ports:
       - "7000:8080"
       - "9000"
@@ -22,9 +22,7 @@ services:
     stop_grace_period: 180s
 
   web:
-    build:
-      context: ./app
-    image: app:1
+    image: app:1.0.0
     ports:
       - "8081-8085:8081"
     networks:
