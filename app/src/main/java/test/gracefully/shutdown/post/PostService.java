@@ -15,8 +15,17 @@ public class PostService {
     @Transactional
     public void like(Long id) {
         Post post = findPost(id);
+        bug(post);
         post.like();
         postRepository.save(post);
+    }
+
+    private void bug(Post post) {
+        if (post.getLikes() % 2 == 1) {
+            try {
+                Thread.sleep(TWO_MINUTES);
+            } catch (InterruptedException e) {}
+        }
     }
 
     public Post findPost(Long id) {
