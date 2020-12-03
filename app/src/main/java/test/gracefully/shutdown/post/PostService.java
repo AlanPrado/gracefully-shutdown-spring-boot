@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 @Service
 public class PostService {
+    private static final int TWO_MINUTES = 120_000;
 
     @Autowired
     private PostRepository postRepository;
