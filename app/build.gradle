@@ -7,7 +7,7 @@ plugins {
 
 group = 'test.gracefully.shutdown'
 version = '1.0.0'
-sourceCompatibility = '1.11'
+sourceCompatibility = 8
 
 repositories {
     mavenCentral()
