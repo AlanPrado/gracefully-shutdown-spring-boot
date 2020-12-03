@@ -5,7 +5,7 @@ services:
     image: database:1.0.0
     ports:
       - "7000:8080"
-      - "9000"
+      - "9090"
     networks:
       - private_network
     deploy:
