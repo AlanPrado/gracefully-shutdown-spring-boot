@@ -2,8 +2,10 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = 8
+
 group 'test.gracefully.shutdown'
-version '0.0.1-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()

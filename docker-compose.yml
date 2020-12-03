@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+
+  database:
+    image: database:1.0.0
+    ports:
+      - "7000:8080"
+      - "9000"
+    networks:
+      - private_network
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    stop_grace_period: 180s
+
+  web:
+    image: app:1.0.1
+    ports:
+      - "8081:8081"
+    networks:
+      - private_network
+    depends_on:
+      - database
+    deploy:
+      replicas: 4
+      # https://docs.docker.com/compose/compose-file/#update_config
+      update_config:
+        # number of containers to update at a time.
+        parallelism: 1
+        # time to wait between updating a group of containers.
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    # https://docs.docker.com/compose/compose-file/#stop_grace_period
+    # timeout to send the SIGKILL signal
+    stop_grace_period: 180s
+
+networks:
+  private_network:
