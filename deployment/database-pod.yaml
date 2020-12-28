@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o deployment/
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.network/private_network: "true"
+    io.kompose.service: database
+  name: database
+spec:
+  containers:
+    - image: database:1.0.0
+      name: database
+      ports:
+        - containerPort: 8080
+      resources:
+        limits:
+          cpu: 500m
+          memory: "536870912"
+  restartPolicy: OnFailure
+  terminationGracePeriodSeconds: 180
+status: {}
