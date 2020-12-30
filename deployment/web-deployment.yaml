@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o deployment
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web
+  name: web
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      io.kompose.service: web
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -o deployment
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/private-network: "true"
+        io.kompose.service: web
+    spec:
+      containers:
+        - image: acrcloud2020.azurecr.io/app:1.0.1
+          name: web
+          ports:
+            - containerPort: 8081
+          resources:
+            limits:
+              cpu: 500m
+              memory: "536870912"
+      initContainers:
+        - name: init-database
+          image: busybox
+          command: ['sh', '-c', 'until nc -z database:9090; do echo waiting for db; sleep 2; done;']
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 180
+status: {}
